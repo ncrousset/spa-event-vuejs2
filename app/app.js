@@ -37,10 +37,19 @@ var vm = new Vue({
 
 		// add the one event in the list events
 		addEvent: function() {
-			if(this.event.name.length > 0 && yhis.event.date.length > 0) {
+			if(this.event.name   && this.event.date) {
 				this.events.push(this.event);
 				this.event = {};
 			} 
+		},
+
+		// delete the one event
+		deleteEvent: function(index) {
+			if(typeof this.events[index] == 'object') {
+				if(confirm("Are you sure you want to delete the event?")) {
+					this.events.splice(index, 1);
+				}
+			}
 		}
 	}
 });
