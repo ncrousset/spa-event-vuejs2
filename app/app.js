@@ -1,5 +1,40 @@
+// Listing evenst component
+var EvenstListing = Vue.extend({
+	template: '#events-listing-template',
+	data: function() {
+		return {
+			events: this.$parent.events
+		}
+	}
+});
+
+// Add evenst component
+var EvenstAdd = Vue.extend({
+	template: "#events-add-templante",
+	data: function() {
+		return {
+			event: this.$parent.event
+		}
+	},
+	methods: {
+		addEvent: function() {
+			
+		}
+	}
+});
+
+// Create the router
+var router = new VueRouter({
+	mode: 'hash',
+	base: window.location.href,
+	routes: [
+		{ path: '/', component: EvenstListing },
+		{ path: '/add', component: EvenstAdd }
+	]
+})
+
 var vm = new Vue({
-	el: "#events",
+	router,
 	data: {
 		event: {},
 		events: []
@@ -52,4 +87,5 @@ var vm = new Vue({
 			}
 		}
 	}
-});
+	
+}).$mount('#events');
